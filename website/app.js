@@ -6,7 +6,7 @@ const baseURL = `http://api.openweathermap.org/data/2.5/weather?zip=`;
 
 // Create a new date instance dynamically with JS
 const d = new Date();
-const newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
+const newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
 
 const generate = document.getElementById("generate");
 const zip = document.getElementById("zip");

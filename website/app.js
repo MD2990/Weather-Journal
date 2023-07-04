@@ -1,12 +1,25 @@
 /* Global Variables */
 
 const units = "imperial";
-const apiKey = `bdbd673eca32ffdfc4607192143df538`;
+let apiKey 
 const baseURL = `http://api.openweathermap.org/data/2.5/weather?zip=`;
+async function getApiKey() {
+  const data = await fetch("/apiKey", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const res = await data.json();
+
+  apiKey = res.apiKey;
+}
+
+getApiKey();
 
 // Create a new date instance dynamically with JS
 const d = new Date();
-const newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
+const newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
 const generate = document.getElementById("generate");
 const zip = document.getElementById("zip");

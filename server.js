@@ -4,6 +4,10 @@ const projectData = {};
 // Require Express to run server and routes
 const express = require("express");
 
+// .env file
+
+const dotenv = require("dotenv").config();
+
 // Start up an instance of app
 const app = express();
 
@@ -47,6 +51,15 @@ app.post("/add", function (req, res, next) {
     projectData.feelings = feelings;
     projectData.icon = icon;
     res.status(200).json({ done: true });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// send api key
+app.get("/apiKey", function (req, res, next) {
+  try {
+    res.status(200).json({ apiKey: process.env.API_KEY });
   } catch (error) {
     next(error);
   }
